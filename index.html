@@ -267,11 +267,6 @@
                 be a bot.
               </li>
               <li>
-                <strong>Uniqueness Score</strong> is a score from 1 to 5, with 5 being the least
-                likely to have more than one device assigned to a
-                <strong>Browser Identifier</strong>.
-              </li>
-              <li>
                 <strong>Fingerprint Hash</strong> is the SHA-256 hash of the fingerprint object you
                 sent in this request.
               </li>
@@ -300,10 +295,6 @@
               <div class="field">
                 <div class="text">Bot Score (1-5)</div>
                 <div class="value" id="field-bot">Fetching...</div>
-              </div>
-              <div class="field">
-                <div class="text">Uniqueness Score (1-5)</div>
-                <div class="value" id="field-uniqueness">Fetching...</div>
               </div>
               <div class="field">
                 <div class="text">Fingerprint Hash</div>
@@ -367,13 +358,10 @@
         const hash = document.getElementById('field-hash');
         const bot = document.getElementById('field-bot');
         const uniqueness = document.getElementById('field-uniqueness');
-        const description = document.getElementById('field-description');
 
         cluster.textContent = data.clusterUUID || 'N/A';
-        hash.textContent = data.hash || 'N/A';
+        hash.textContent = data.debug.hash || 'N/A';
         bot.textContent = botScore[data.botScore] || 'N/A';
-        uniqueness.textContent = uniquenessScore[data.uniquenessScore] || 'N/A';
-        description.textContent = data.description || 'N/A';
       }
 
       const vertexShaderSource = `
